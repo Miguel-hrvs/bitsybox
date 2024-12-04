@@ -63,7 +63,7 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cmake -G "MSYS Makefiles" -DCMAKE_PREFIX_PATH=/ucrt64/lib/cmake/SDL2/SDL2Config.cmake . -DCMAKE_BUILD_TYPE=Release
+          cmake -G "MSYS Makefiles" -DCMAKE_PREFIX_PATH=/mingw64/lib/cmake/SDL2/SDL2Config.cmake . -DCMAKE_BUILD_TYPE=Release
           cmake --build .
         
       - name: Deploy
