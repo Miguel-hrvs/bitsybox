@@ -28,7 +28,6 @@ jobs:
           
       - name: Build
         run: |
-          cd build
           make -j$(nproc)
 
       - name: Deploy
