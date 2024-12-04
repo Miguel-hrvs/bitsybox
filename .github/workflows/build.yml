@@ -35,4 +35,4 @@ jobs:
         with:
           name: "bitsybox-linux-gcc14"
           path: |
-            build/bin/bitsybox
+            build/bitsybox_LIN/bitsybox
