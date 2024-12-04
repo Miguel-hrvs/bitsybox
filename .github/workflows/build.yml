@@ -53,7 +53,7 @@ jobs:
             git
             gcc
           pacboy: >-
-            sdl2:p
+            SDL2:p
             cmake:p
 
       - uses: actions/checkout@v4
