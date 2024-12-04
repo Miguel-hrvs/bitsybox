@@ -84,7 +84,7 @@ jobs:
           fetch-depth: 0
 
       - name: Install
-        run: brew uninstall --ignore-dependencies libidn2
+        run: brew uninstall --ignore-dependencies libidn2 && brew install sdl2
 
       - name: Build
         run: |
