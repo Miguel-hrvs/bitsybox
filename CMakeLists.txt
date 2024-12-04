@@ -12,7 +12,7 @@ add_executable(${APP_NAME} ${SRC_FILES})
 
 # Set SDL2 flags
 find_package(SDL2 REQUIRED)
-include_directories(${SDL2_INCLUDE_DIRS})
+include_directories(${SDL2_INCLUDE_DIR})
 
 # Link SDL2 libraries
-target_link_libraries(${APP_NAME} ${SDL2_LIBRARIES} m)
+target_link_libraries(${APP_NAME} SDL2::SDL2 SDL2::SDL2main m)
