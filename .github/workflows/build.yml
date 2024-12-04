@@ -51,6 +51,10 @@ jobs:
           install: >-
             base-devel
             git
+            gcc
+          pacboy: >-
+            sdl2:p
+            cmake:p
 
       - uses: actions/checkout@v4
         with:
