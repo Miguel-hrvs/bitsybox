@@ -59,7 +59,7 @@ jobs:
 
       - name: Install
         run: |
-          pacman -S sdl2 nodejs
+          pacman -S mingw-w64-ucrt-x86_64-SDL2 mingw-w64-ucrt-x86_64-nodejs
 
       - name: Build
         shell: bash
