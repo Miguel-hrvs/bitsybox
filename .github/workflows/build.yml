@@ -51,6 +51,8 @@ jobs:
             base-devel
             git
             gcc
+            sdl2
+            nodejs
 
       - uses: actions/checkout@v4
         with:
