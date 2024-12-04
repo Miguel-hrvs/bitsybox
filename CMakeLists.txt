@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.10)
 project(bitsybox LANGUAGES C)
 
 set(APP_NAME bitsybox)
-list(APPEND CMAKE_PREFIX_PATH SDL2)
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
 
 # Set source files
 file(GLOB_RECURSE SRC_FILES src/bitsybox/*.c)
@@ -12,7 +12,7 @@ add_executable(${APP_NAME} ${SRC_FILES})
 
 # Set SDL2 flags
 find_package(SDL2 REQUIRED)
-target_include_directories(${APP_NAME} PRIVATE ${SDL2_INCLUDE_DIRS})
+include_directories(${SDL2_INCLUDE_DIRS})
 
 # Link SDL2 libraries
 target_link_libraries(${APP_NAME} ${SDL2_LIBRARIES} m)
