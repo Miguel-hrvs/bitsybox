@@ -28,6 +28,7 @@ jobs:
           
       - name: Build
         run: |
+          cmake .
           make -j$(nproc)
 
       - name: Deploy
@@ -35,4 +36,4 @@ jobs:
         with:
           name: "bitsybox-linux-gcc14"
           path: |
-            build/bitsybox_LIN/bitsybox
+            bitsybox
