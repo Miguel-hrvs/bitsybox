@@ -51,13 +51,15 @@ jobs:
             base-devel
             git
             gcc
-            sdl2
-            nodejs
 
       - uses: actions/checkout@v4
         with:
           submodules: recursive
           fetch-depth: 0
+
+      - name: Install
+        run: |
+          sudo pacman -S sdl2 nodejs
 
       - name: Build
         shell: bash
