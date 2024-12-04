@@ -64,7 +64,7 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cmake .
+          cmake . -DCMAKE_C_COMPILER=C:/msys64/mingw64/bin/gcc.exe
           make -j$(nproc)
         
       - name: Deploy
