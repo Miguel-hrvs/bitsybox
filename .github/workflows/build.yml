@@ -45,7 +45,7 @@ jobs:
       - name: Setup Mingw
         uses: msys2/setup-msys2@v2
         with:
-          msystem: MINGW64
+          msystem: UCRT64
           update: true
           install: >-
             base-devel
@@ -63,7 +63,7 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cmake -G "MSYS Makefiles" -DCMAKE_PREFIX_PATH=/mingw64/lib/cmake/SDL2/SDL2Config.cmake . -DCMAKE_BUILD_TYPE=Release
+          cmake -G "MSYS Makefiles" . -DCMAKE_PREFIX_PATH="C:\msys64\ucrt64\bin\sdl2-config" -DCMAKE_BUILD_TYPE=Release
           cmake --build .
         
       - name: Deploy

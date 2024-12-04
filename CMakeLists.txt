@@ -11,7 +11,14 @@ add_executable(${APP_NAME} ${SRC_FILES})
 
 # Set SDL2 flags
 find_package(SDL2 REQUIRED)
-include_directories(${SDL2_INCLUDE_DIR})
+target_include_directories(${APP_NAME} PRIVATE ${SDL2_INCLUDE_DIRS})
 
 # Link SDL2 libraries
-target_link_libraries(${APP_NAME} SDL2 m)
+target_link_libraries(${APP_NAME} ${SDL2_LIBRARIES} m)
+
+# Disable windows terminal output
+if(MINGW)
+set_target_properties(${APP_NAME} PROPERTIES
+    LINK_FLAGS "-Wl,-subsystem,windows"
+)
+endif()
