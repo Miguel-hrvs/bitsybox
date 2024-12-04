@@ -24,7 +24,7 @@ jobs:
           
       - name: Build
         run: |
-          cmake .
+          cmake . -DCMAKE_BUILD_TYPE=Release
           make -j$(nproc)
 
       - name: Deploy
@@ -51,7 +51,7 @@ jobs:
             base-devel
             git
             gcc
-            ninja
+            cmake
 
       - uses: actions/checkout@v4
         with:
@@ -65,7 +65,7 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cmake -G Ninja . -DCMAKE_C_COMPILER=C:/msys64/mingw64/bin/gcc.exe
+          cmake . -DCMAKE_C_COMPILER=C:/msys64/mingw64/bin/gcc.exe -DCMAKE_BUILD_TYPE=Release
           cmake --build .
         
       - name: Deploy
@@ -90,7 +90,7 @@ jobs:
 
       - name: Build
         run: |
-          cmake .
+          cmake . -DCMAKE_BUILD_TYPE=Release
           make -j$(nproc)
       - name: Deploy
         uses: actions/upload-artifact@v4
