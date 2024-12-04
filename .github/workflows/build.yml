@@ -59,7 +59,7 @@ jobs:
 
       - name: Install
         run: |
-          sudo pacman -S sdl2 nodejs
+          pacman -S sdl2 nodejs
 
       - name: Build
         shell: bash
