@@ -5,6 +5,9 @@
 #include <limits.h> // for PATH_MAX
 #include <dirent.h>
 #include "duktape/duktape.h"
+
+// fix to compile with tcc
+#define SDL_DISABLE_IMMINTRIN_H 1
 #include "SDL.h"
 
 /* # DEBUG-ONLY INCLUDES */
