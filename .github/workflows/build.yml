@@ -14,10 +14,6 @@ jobs:
           submodules: recursive
           fetch-depth: 0
 
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 2.6
-
       - name: Install
         run: |
           sudo add-apt-repository ppa:ubuntu-toolchain-r/ppa
@@ -35,5 +31,41 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: "bitsybox-linux-gcc14"
+          path: |
+            bitsybox
+
+  # === Windows MinGW-64 ===
+  windows-mingw:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: msys2 {0}
+
+    steps:
+      - name: Setup Mingw
+        uses: msys2/setup-msys2@v2
+        with:
+          msystem: UCRT64
+          update: true
+          install: >-
+            base-devel
+            git
+            gcc
+
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Build
+        shell: bash
+        run: |
+          cmake .
+          make -j$(nproc)
+        
+      - name: Deploy
+        uses: actions/upload-artifact@v4
+        with:
+          name: "bitsybox-windows-mingw"
           path: |
             bitsybox
