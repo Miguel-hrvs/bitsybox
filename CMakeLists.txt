@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project(bitsybox)
+project(bitsybox LANGUAGES C)
 
 set(APP_NAME bitsybox)
 
@@ -50,3 +50,5 @@ target_compile_definitions(${APP_NAME} PRIVATE PLATFORM_${PLATFORM})
 
 # Link SDL2 libraries
 target_link_libraries(${APP_NAME} ${SDL2_LIBRARIES} m)
+
+include(cmake/FindSDL2.cmake)
