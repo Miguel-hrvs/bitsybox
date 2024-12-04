@@ -18,7 +18,7 @@ jobs:
         run: |
           sudo add-apt-repository ppa:ubuntu-toolchain-r/ppa
           sudo apt update
-          sudo apt-get install gcc-14 g++-14 libsdl2-dev nodejs libglu1-mesa-dev libasound2-dev libpulse-dev libaudio-dev libsamplerate0-dev -y
+          sudo apt-get install gcc-14 g++-14 libsdl2-dev libglu1-mesa-dev libasound2-dev libpulse-dev libaudio-dev libsamplerate0-dev -y
           sudo ln -s -f /usr/bin/gcc-14 /usr/bin/gcc
           sudo ln -s -f /usr/bin/g++-14 /usr/bin/g++
           
@@ -51,6 +51,7 @@ jobs:
             base-devel
             git
             gcc
+            ninja
 
       - uses: actions/checkout@v4
         with:
@@ -59,17 +60,41 @@ jobs:
 
       - name: Install
         run: |
-          pacman -S --noconfirm mingw-w64-ucrt-x86_64-SDL2 mingw-w64-ucrt-x86_64-nodejs -y
+          pacman -S --noconfirm mingw-w64-ucrt-x86_64-SDL2
 
       - name: Build
         shell: bash
         run: |
-          cmake . -DCMAKE_C_COMPILER=C:/msys64/mingw64/bin/gcc.exe
-          make -j$(nproc)
+          cmake -G Ninja . -DCMAKE_C_COMPILER=C:/msys64/mingw64/bin/gcc.exe
+          cmake --build .
         
       - name: Deploy
         uses: actions/upload-artifact@v4
         with:
           name: "bitsybox-windows-mingw"
+          path: |
+            bitsybox
+
+  # === MacOS 13 ===
+  macos:
+    runs-on: macos-13
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Install
+        run: brew uninstall --ignore-dependencies libidn2
+
+      - name: Build
+        run: |
+          cmake .
+          make -j$(nproc)
+      - name: Deploy
+        uses: actions/upload-artifact@v4
+        with:
+          name: "bitsybox-macos"
           path: |
             bitsybox
