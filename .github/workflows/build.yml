@@ -36,7 +36,8 @@ jobs:
 
   # === Ubuntu arm64 ===
   linux-arm:
-    runs-on: ubuntu-22.04-arm
+    runs-on: ubuntu-22.04
+    arch: arm64
 
     steps:
       - uses: actions/checkout@v4
@@ -90,7 +91,7 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cmake -G "MSYS Makefiles" . -DCMAKE_BUILD_TYPE=Release
+          cmake . -DCMAKE_BUILD_TYPE=Release
           cmake --build .
         
       - name: Deploy
@@ -124,7 +125,6 @@ jobs:
           name: "bitsybox-macos"
           path: |
             bitsybox
-            *.dylib
 
   # === MacOS 14 / arm64 ===
   macos-arm64:
@@ -150,5 +150,4 @@ jobs:
           name: "bitsybox-macos-arm64"
           path: |
             bitsybox
-            *.dylib
 
