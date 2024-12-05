@@ -34,33 +34,6 @@ jobs:
           path: |
             bitsybox
 
-  # === Ubuntu arm64 ===
-  linux-arm:
-    runs-on: ubuntu-22.04
-    arch: arm64
-
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          submodules: recursive
-          fetch-depth: 0
-
-      - name: Install
-        run: |
-          sudo apt update -y
-          
-      - name: Build
-        run: |
-          cmake . -DCMAKE_BUILD_TYPE=Release
-          make -j$(nproc)
-
-      - name: Deploy
-        uses: actions/upload-artifact@v4
-        with:
-          name: "bitsybox-linux-arm64"
-          path: |
-            bitsybox
-
   # === Windows MinGW-64 ===
   windows-mingw:
     runs-on: windows-latest
