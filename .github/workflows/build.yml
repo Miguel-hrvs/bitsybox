@@ -70,7 +70,7 @@ jobs:
         with:
           name: "bitsybox-windows-mingw"
           path: |
-            bitsybox
+            D:/a/bitsybox/bitsybox
 
   # === MacOS 13 ===
   macos:
