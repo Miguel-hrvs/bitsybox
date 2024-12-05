@@ -17,7 +17,7 @@ target_include_directories(${APP_NAME} PRIVATE ${SDL2_INCLUDE_DIRS})
 target_link_libraries(${APP_NAME} ${SDL2_LIBRARIES} m)
 
 # Disable windows terminal output
-if(MINGW)
+if(MSYS)
 set_target_properties(${APP_NAME} PROPERTIES
     LINK_FLAGS "-Wl,-subsystem,windows"
 )

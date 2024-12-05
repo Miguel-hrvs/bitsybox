@@ -34,7 +34,7 @@ jobs:
           path: |
             bitsybox
 
-  # === Windows MinGW-64 ===
+  # === Windows UCRT64 ===
   windows-mingw:
     runs-on: windows-latest
     defaults:
@@ -45,7 +45,7 @@ jobs:
       - name: Setup Mingw
         uses: msys2/setup-msys2@v2
         with:
-          msystem: MINGW64
+          msystem: UCRT64
           update: true
           install: >-
             base-devel
@@ -70,7 +70,9 @@ jobs:
         with:
           name: "bitsybox-windows-mingw"
           path: |
-            D:/a/bitsybox/bitsybox
+            D:/a/bitsybox/bitsybox.exe
+            C:/msys64/ucrt64/bin/SDL2.dll
+            C:/msys64/usr/bin/msys-2.0.dll
 
   # === MacOS 13 ===
   macos:
