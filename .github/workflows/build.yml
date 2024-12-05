@@ -88,10 +88,10 @@ jobs:
           install: >-
             base-devel
             git
-            
+            clang
+
           pacboy: >-
             SDL2:p
-            ninja:p
 
       - uses: actions/checkout@v4
         with:
@@ -100,7 +100,7 @@ jobs:
 
       - name: Build
         run: |
-          cmake -G "Ninja" -DCMAKE_BUILD_TYPE=Release .
+          cmake -G "MSYS Makefiles" -DCMAKE_BUILD_TYPE=Release .
           cmake --build .
         
       - name: Deploy
