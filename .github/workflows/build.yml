@@ -90,13 +90,14 @@ jobs:
             git
             clang
 
-          pacboy: >-
-            SDL2:p
-
       - uses: actions/checkout@v4
         with:
           submodules: recursive
           fetch-depth: 0
+
+      - name: Install
+        run: |
+          pacman -S --noconfirm mingw-w64-clang-aarch64-SDL2 mingw-w64-clang-aarch64-cmake 
 
       - name: Build
         run: |
