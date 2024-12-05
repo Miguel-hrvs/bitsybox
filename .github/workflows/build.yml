@@ -68,11 +68,47 @@ jobs:
       - name: Deploy
         uses: actions/upload-artifact@v4
         with:
-          name: "bitsybox-windows-mingw"
+          name: "bitsybox-windows-msys"
           path: |
             D:/a/bitsybox/bitsybox.exe
-            C:/msys64/ucrt64/bin/SDL2.dll
-            C:/msys64/usr/bin/msys-2.0.dll
+
+  # === Windows CLANGARM64 ===
+  windows-mingw:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: msys2 {0}
+
+    steps:
+      - name: Setup Mingw
+        uses: msys2/setup-msys2@v2
+        with:
+          msystem: CLANGARM64
+          update: true
+          install: >-
+            base-devel
+            git
+            gcc
+          pacboy: >-
+            SDL2:p
+            cmake:p
+
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Build
+        run: |
+          cmake -G "MSYS Makefiles" -DCMAKE_BUILD_TYPE=Release .
+          cmake --build .
+        
+      - name: Deploy
+        uses: actions/upload-artifact@v4
+        with:
+          name: "bitsybox-windows-msys-arm64"
+          path: |
+            D:/a/bitsybox/bitsybox.exe
 
   # === MacOS 13 ===
   macos:
