@@ -45,7 +45,7 @@ jobs:
       - name: Setup Mingw
         uses: msys2/setup-msys2@v2
         with:
-          msystem: UCRT64
+          msystem: MINGW64
           update: true
           install: >-
             base-devel
