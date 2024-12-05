@@ -35,7 +35,7 @@ jobs:
             bitsybox
 
   # === Windows UCRT64 ===
-  windows-mingw:
+  windows-msys:
     runs-on: windows-latest
     defaults:
       run:
@@ -73,7 +73,7 @@ jobs:
             D:/a/bitsybox/bitsybox.exe
 
   # === Windows CLANGARM64 ===
-  windows-mingw:
+  windows-msys-arm64:
     runs-on: windows-latest
     defaults:
       run:
