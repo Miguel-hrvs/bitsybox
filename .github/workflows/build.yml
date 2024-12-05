@@ -97,7 +97,7 @@ jobs:
 
       - name: Install
         run: |
-          pacman -S --noconfirm mingw-w64-clang-aarch64-SDL2 mingw-w64-clang-aarch64-cmake 
+          pacman -Suy --noconfirm mingw-w64-clang-aarch64-clang mingw-w64-clang-aarch64-SDL2 mingw-w64-clang-aarch64-cmake 
 
       - name: Build
         run: |
